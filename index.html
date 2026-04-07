@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gyroscopic Couple</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- 3D viewport -->
+    <div class="viewport">
+      <div class="wrap">
+        <canvas id="c"></canvas>
+        <div class="labels">
+          <span class="lbl-w">→ ω &nbsp; spin axis</span>
+          <span class="lbl-O">↑ Ω &nbsp; precession</span>
+          <span class="lbl-C">→ C &nbsp; gyroscopic couple</span>
+        </div>
+      </div>
+      <div class="info">
+        <b>C = I · ω · Ω</b> &nbsp;|&nbsp;
+        Couple acts perpendicular to both spin axis and precession axis
+      </div>
+    </div>
+
+    <!-- Right column: panel + graph -->
+    <div class="right-col">
+
+      <!-- Control panel -->
+      <div class="panel">
+        <div class="panel-title">Enter Values:</div>
+
+        <div class="field slider-field">
+          <label>Moment of Inertia (I)</label>
+          <input type="range" id="inp-I" min="0" max="1500" step="10" value="0">
+          <span class="value" id="val-I">0 kg·m²</span>
+        </div>
+
+        <div class="field slider-field">
+          <label>Spin Velocity (ω)</label>
+          <input type="range" id="inp-rpm" min="0" max="4000" step="50" value="0">
+          <span class="value" id="val-rpm">0 rpm</span>
+        </div>
+
+        <div class="field slider-field">
+          <label>Precession Velocity (Ω)</label>
+          <input type="range" id="inp-prec" min="0" max="200" step="1" value="0">
+          <span class="value" id="val-prec">0 rad/s</span>
+        </div>
+
+        <button class="btn btn-orange" id="btn-calc">Calculate</button>
+
+        <div class="result-box" id="result-box">Couple (C)</div>
+
+        <button class="btn btn-orange" id="btn-apply">Apply</button>
+
+        <div class="btn-row">
+          <button class="btn btn-orange" id="btn-stop">Stop</button>
+          <button class="btn btn-orange" id="btn-reset">Reset</button>
+        </div>
+      </div>
+
+      <!-- Graph panel -->
+      <div class="graph-panel">
+        <div class="graph-header">
+          <span class="graph-title">Couple C vs ω</span>
+          <span class="graph-legend">
+            <span class="leg-line" style="background:#e8960a;"></span> C = I·ω·Ω &nbsp;
+            <span class="leg-dot" style="background:#3a7acc;"></span> Current
+          </span>
+        </div>
+        <div class="graph-wrap">
+          <canvas id="couple-graph"></canvas>
+        </div>
+        
+      </div>
+
+    </div><!-- end right-col -->
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
