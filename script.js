@@ -71,10 +71,12 @@ const arrow = (color, len) => {
   hd.position.y = len+.07;
   g.add(sh,hd); return g;
 };
-const wA = arrow(0x3a7acc,1.3); wA.rotation.z=-Math.PI/2; wA.position.x=.7; WG.add(wA);
-const pA = arrow(0xcc3a3a,1.0); pA.position.y=1.15; scene.add(pA);
+const wA = arrow(0x3a7acc,1.3); wA.rotation.z=-Math.PI/2; wA.position.x=.7;PG.add(wA);     
 
-const cPivot = new THREE.Group(); scene.add(cPivot);
+const pA = arrow(0xcc3a3a,1.0); pA.position.y=1.15; PG.add(pA);     
+
+
+const cPivot = new THREE.Group(); PG.add(cPivot); 
 const cA = arrow(0xe8960a,1.0); cA.rotation.x=Math.PI/2; cPivot.add(cA);
 
 let sa=0, pa=0, ss=5, ps=.55, running=false, id=null;
@@ -84,7 +86,6 @@ function loop() {
   id = requestAnimationFrame(loop);
   sa+=ss*.016; pa+=ps*.016;
   PG.rotation.y=pa; GG.rotation.z=Math.sin(pa*.5)*.06; WG.rotation.x=sa;
-  cPivot.rotation.y=pa+Math.PI/2;
   draw3D();
 }
 
