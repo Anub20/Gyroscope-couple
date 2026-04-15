@@ -153,7 +153,7 @@ function buildGraph() {
       },
       scales: {
         x: {
-          type: 'logarithmic',
+          type: 'linear',
           title: { display: true, text: 'ω (rpm)', color: '#8a9ab0', font: { size: 11 } },
           min: 0,
           max: 6000,
